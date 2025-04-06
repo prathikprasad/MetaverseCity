@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,6 +6,7 @@ public class SunControl : MonoBehaviour
 {
     public Slider timeSliderx; // Reference to the UI Slider component
     public Slider timeSliderz; // Reference to the UI Slider component
+    public TextMeshProUGUI timeText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,7 +21,7 @@ public class SunControl : MonoBehaviour
         float rotationAnglex = timeSliderx.value * 360f;
         float rotationAnglez = timeSliderz.value * 360f;
         changeTime(rotationAnglex, rotationAnglez);
-
+        timeText.text = (timeSliderx.value*24).ToString("F0") + ":00"; // Update the text with the slider value
         // Set the rotation of the sun
 
     }
@@ -28,5 +30,6 @@ public class SunControl : MonoBehaviour
     {
         
         transform.rotation = Quaternion.Euler(rotationAnglex, 0f , rotationAnglez);
+        
     }
 }

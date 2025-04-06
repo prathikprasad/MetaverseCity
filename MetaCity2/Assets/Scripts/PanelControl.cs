@@ -7,6 +7,7 @@ public class PanelControl : MonoBehaviour
     public GameObject Sun;
     public Slider xRotationSlider; // Reference to the UI Slider component for x-axis rotation
     public Slider yRotationSlider; // Reference to the UI Slider component for y-axis rotation
+    public Slider timeSlider;
 
     public bool useSlider;
     public bool followSun;
@@ -25,7 +26,12 @@ public class PanelControl : MonoBehaviour
         }
         else if (followSun)
         {
-            Panel.transform.rotation = Sun.transform.rotation;
+
+            if (timeSlider.value > 0.35f && timeSlider.value < 0.65f)
+            {
+                Panel.transform.rotation = Sun.transform.rotation;
+            }
+            
             //Panel.transform.rotation = Quaternion.Euler(Mathf.Clamp(Sun.transform.rotation.x, 75, 275), 0f, 0f);
         }
     }
